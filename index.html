@@ -705,7 +705,7 @@
   </p>
 
   <p>
-    The picture for AdamW is more nuanced. At low dimension (<span class="m">d ≤ 52</span>), AdamW achieves perfect generalization across all seeds. But as capacity grows, reliability degrades: at <span class="m">d = 112</span> the mean drops to ~97.6% with emerging variance, at <span class="m">d = 512</span> three seeds collapse near chance pulling the mean to ~88.3%, and at <span class="m">d = 1024</span> six seeds fail outright (mean ~73.5%). Excess capacity appears to destabilize AdamW training on this task — the ground-minimum-capacity solution at <span class="m">d = 1</span> is not just sufficient, it may be optimal.
+    The picture for AdamW is more nuanced. At low dimension (<span class="m">d ≤ 52</span>), AdamW achieves perfect generalization across all seeds. But as capacity grows, reliability degrades: at <span class="m">d = 112</span> the mean drops to ~97.6% with emerging variance, at <span class="m">d = 512</span> three seeds collapse near chance pulling the mean to ~88.3%, and at <span class="m">d = 1024</span> six seeds fail outright (mean ~73.5%). Excess capacity appears to destabilize AdamW training on this task — the ground-minimum-capacity solution at <span class="m">d = 1</span> is not only sufficient, it may be optimal.
   </p>
 
   <figure>
@@ -716,7 +716,7 @@
   </figure>
   <div class="finding">
     <span class="finding-hed">Finding 1</span>
-    <p>Adam recovers MAJORITY at <span class="m">d = 1</span> and generalizes perfectly to all tested lengths. SGD requires <span class="m">d ≥ 15</span> to begin learning and plateaus at ~95% regardless of further capacity increase. Model capacity does not substitute for optimizer adaptivity on this task. Notably, excess capacity hurts Adam: reliability degrades above <span class="m">d = 52</span> and collapses at <span class="m">d = 1024</span>, suggesting the ground-minimum-capacity solution is not just sufficient but optimal.</p>
+    <p>Adam recovers MAJORITY at <span class="m">d = 1</span> and generalizes perfectly to all tested lengths. SGD requires <span class="m">d ≥ 15</span> to begin learning and plateaus at ~95% regardless of further capacity increase. Model capacity does not substitute for optimizer adaptivity on this task. Notably, excess capacity hurts Adam: reliability degrades above <span class="m">d = 52</span> and collapses at <span class="m">d = 1024</span>.</p>
   </div>
 
   <p>
@@ -908,7 +908,7 @@
 <section id="conclusion">
   <h2>6 · Conclusion</h2>
 
-  <p>Three experiments on a single Boolean function surface something broader: the gap between what transformers <em>can</em> compute and what gradient descent actually finds is not random noise — it is structured, reproducible, and sensitive to surprisingly small properties of the training distribution. The findings raise questions we think are worth pursuing.</p>
+  <p>Three experiments on a single Boolean function surface something broader: the gap between what transformers <em>can</em> compute and what gradient descent actually finds is non-trivial and sheds light on a exiting research trajectory for the Mech-Interp community to follow and develop. The findings raise questions we think are worth pursuing.</p>
 
   <div class="open-questions">
     <span class="open-questions-hed">Open Questions &amp; Future Directions</span>
@@ -988,3 +988,4 @@ https://brokttv.github.io/Blog-1/</pre>
 
 </body>
 </html>
+
