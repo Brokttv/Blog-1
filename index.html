@@ -772,7 +772,7 @@
 
   <div class="finding">
     <span class="finding-hed">Finding 2</span>
-    <p>Gradient descent under softmax converges to a token-clustering solution (<span class="m">Δ ≈ 1.10</span>) categorically distinct from the theoretical uniform-attention construction (<span class="m">Δ = 0</span>). Saturated training recovers a solution in only ~50% of runs with no consistent mechanism. Under even-length training, softmax inference can fail on weights where saturated inference succeeds, indicating a mismatch between the learned weight geometry and the softmax attention pattern at test-time sequence lengths.</p>
+    <p>Gradient descent under softmax converges to a token-clustering solution (<span class="m">Δ ≈ 1.10</span>) categorically distinct from the theoretical uniform-attention construction (<span class="m">Δ = 0</span>). Saturated training recovers a solution in only ~50% of runs with no consistent mechanism.</p>
   </div>
 </section>
 
@@ -867,7 +867,7 @@
    <h3>Softmax failure and saturated rescue on even-length data</h3>
 
   <p>
-    A further asymmetry appears under even-length training. Several seeds trained with softmax show degraded softmax-inference accuracy (84–85%) while saturated inference on the same trained weights recovers to 100%. The learned weights are geometrically correct — the clustering gap is sufficient — but the diffuse softmax attention pattern at inference introduces enough probability mass on cross-value tokens to push borderline cases across the decision boundary. Switching to saturated inference, which hard-thresholds on the maximum scores, removes this diffusion and restores accuracy. This interaction between training regime and inference regime is not present under odd-length training, where the softmax attention pattern is sharp enough at both train and test lengths.
+    A further asymmetry appears under even-length training. Several seeds trained with softmax show degraded softmax-inference accuracy (84–85%) while saturated inference on the same trained weights recovers to 100%. The learned weights are geometrically correct — the clustering gap is sufficient — but the diffuse softmax attention pattern at inference introduces enough probability mass on cross-value tokens to push borderline cases across the decision boundary. Switching to saturated inference, which hard-thresholds on the maximum scores, removes this diffusion and restores accuracy. This interaction between training regime and inference regime is not present when undefined inputs are relevant under odd-length training.
   </p>
 
   <div class="finding">
@@ -926,6 +926,7 @@ https://brokttv.github.io/Blog-1/</pre>
 
 </body>
 </html>
+
 
 
 
