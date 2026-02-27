@@ -769,76 +769,7 @@
     <p>Gradient descent under softmax converges to a token-clustering solution (<span class="m">Δ ≈ 1.10</span>) categorically distinct from the theoretical uniform-attention construction (<span class="m">Δ = 0</span>). Saturated training recovers a solution in only ~50% of runs with no consistent mechanism.</p>
   </div>
 
-  <h3>Why the Clustering Gap Predicts Correct Classification</h3>
-
-<p>Gradient descent converges to solutions with clustering gap \(\bar{\Delta} \approx 1.10\), and these models generalize perfectly — even to sequences \(27\times\) longer than those seen in training. This section proves two key facts rigorously:</p>
-
-<ol>
-  <li>Any \(\Delta_0 > 0\), \(\Delta_1 > 0\) (together with the sign condition on values) suffices for perfect classification of all non-balanced sequences, at <strong>any</strong> length.</li>
-  <li>The decision boundary is located <strong>exactly</strong> at the majority transition (\(n_1 = n/2\)).</li>
-</ol>
-
-<h4>Setup and Notation</h4>
-
-<p>We retain the three assumptions satisfied by every trained model we inspected:</p>
-<ul>
-  <li><strong>(A1)</strong> \(\Delta_0 = s_{00} - s_{01} > 0\)</li>
-  <li><strong>(A2)</strong> \(\Delta_1 = s_{11} - s_{01} > 0\)</li>
-  <li><strong>(A3)</strong> \(v_0 > 0\), \(v_1 < 0\), and \(W_{\rm out} < 0\) (so \(W_{\rm out} v_1 > 0\))</li>
-</ul>
-
-<h4>Theorem</h4>
-
-<p>Let \(w \in \{0,1\}^n\) with \(n_1\) ones (\(n_0 = n - n_1\) zeros). Under (A1)–(A3), the logit satisfies</p>
-
-\[
-\operatorname{logit}(w) > 0 \iff n_1 > n/2, \qquad \operatorname{logit}(w) < 0 \iff n_1 < n/2
-\]
-
-<p>for every \(n \geq 1\) and every non-balanced input (\(n_1 \neq n/2\)). The classification is therefore length-invariant.</p>
-
-<h4>Proof</h4>
-
-<h5>Lemma 1 — Attention is strictly type-preferring</h5>
-
-<p>Each token attends more to its own type: \(\alpha_{1\to 1} > \alpha_{1\to 0}\) and symmetrically for 0-tokens. (Proof as before: follows directly from \(\Delta_0, \Delta_1 > 0\).) □</p>
-
-<h5>Lemma 2 — Representation after mean-pooling</h5>
-
-<p>Let \(p = n_1/n\), \(q = 1-p\). The mean-pooled representation is</p>
-
-\[
-R = \frac{p\,(p\,\beta_1 v_1 + q\, v_0)}{p\,\beta_1 + q} + \frac{q\,(q\,\beta_0 v_0 + p\, v_1)}{q\,\beta_0 + p} \tag{5}
-\]
-
-<p>where \(\beta_0 = e^{\Delta_0} > 1\) and \(\beta_1 = e^{\Delta_1} > 1\). □</p>
-
-<h5>Lemma 3 — Sign of \(R\) tracks majority</h5>
-
-<p><strong>Symmetric warm-up.</strong> Assume \(\beta_0 = \beta_1 = \beta > 1\) and \(v_1 = -v_0 = -v\) with \(v > 0\). After simplification the numerator yields a factor \(u \cdot N(u,\beta)\) with \(u = 2p - 1\) and</p>
-
-\[
-N(u,\beta) = (\beta^2 - 1)(1 - u^2) - 4\beta < 0
-\]
-
-<p>for all \(\beta > 1\), \(|u| < 1\). The denominator is positive, so \(\operatorname{sgn}(R) = -\operatorname{sgn}(u)\). With \(W_{\rm out} < 0\), the logit sign matches the majority: \(\operatorname{logit} > 0 \iff n_1 > n/2\). □</p>
-
-<p><strong>General (asymmetric) case.</strong> Write \(v_1 = -\lambda v_0\) with \(\lambda > 0\) (\(\approx 0.97\)–\(1.03\) in practice). Substituting gives</p>
-
-\[
-R = v_0 \Biggl[ \frac{p\,(q - \lambda p \beta_1)}{p\,\beta_1 + q} + \frac{q\,(q\,\beta_0 - \lambda p)}{q\,\beta_0 + p} \Biggr].
-\]
-
-<p>The bracketed term \(f(p)\) is negative when \(p > 1/2\) (both numerators pulled negative by majority weighting and \(\beta > 1\)) and positive when \(p < 1/2\). At \(p = 1/2\), \(f(1/2) = 0\). Numerical checks across wide parameter ranges confirm no extra sign changes. Thus \(\operatorname{sgn}(R) = -\operatorname{sgn}(p - 1/2)\), and the logit follows the majority after \(W_{\rm out} < 0\). □</p>
-
-<h4>Corollary — Length invariance</h4>
-
-<p>Expression (5) depends on \(n\) only through \(p = n_1/n\). All other quantities are fixed model parameters. The sign of \(R\) — and hence the classification — is completely independent of sequence length. □</p>
-
-<h4>Comparison to uniform attention</h4>
-
-<p>The theoretical uniform-attention solution (\(\Delta = 0\)) also gives length-invariant majority detection by directly computing the mean. The learned clustering solution (\(\Delta > 0\)) reaches the same answer indirectly: tokens first aggregate same-type information, then the classifier compares type strengths. Both mechanisms are correct and length-invariant, but gradient descent robustly prefers the clustering attractor — any positive \(\Delta\) suffices, explaining the consistent qualitative solution across seeds despite variation in exact magnitude.</p>
-</section>
+ 
 
 <!-- ── 5. FINDING 3 ── -->
 <section id="finding3">
@@ -996,6 +927,7 @@ https://brokttv.github.io/Blog-1/</pre>
 
 </body>
 </html>
+
 
 
 
