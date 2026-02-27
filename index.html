@@ -865,10 +865,7 @@
     As a control, we train the same architecture on OR: <span class="m">OR(w) = <b>1</b>[∃i : w<sub>i</sub> = 1]</span>. OR is a total function — defined on every binary string, including the all-zeros sequence — with no undefined inputs regardless of sequence length. Training on even-length sequences produces the same accuracy as odd-length training across all seeds. The degradation observed for MAJORITY does not appear, confirming that the effect is specific to the presence of undefined inputs and not a general property of even-length training.
   </p>
 
-   <h3>Softmax failure and saturated rescue on even-length data</h3>
 
-  <p>
-    A further asymmetry appears under even-length training. Several seeds trained with softmax show degraded softmax-inference accuracy (84–85%) while saturated inference on the same trained weights recovers to 100%. The learned weights are geometrically correct — the clustering gap is sufficient — but the diffuse softmax attention pattern at inference introduces enough probability mass on cross-value tokens to push borderline cases across the decision boundary. Switching to saturated inference, which hard-thresholds on the maximum scores, removes this diffusion and restores accuracy. This interaction between training regime and inference regime is not present when undefined inputs are not present under odd-length training.
   </p>
 
   <div class="finding">
@@ -927,6 +924,7 @@ https://brokttv.github.io/Blog-1/</pre>
 
 </body>
 </html>
+
 
 
 
