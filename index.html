@@ -597,7 +597,7 @@
   <span class="key-findings-hed">Key Findings</span>
   <ol>
     <li><strong>Optimizer determines recovery.</strong> Adam with embedding dimension <span class="m">d = 1</span> achieves perfect generalization to sequences 27× training length. SGD fails regardless of capacity — even at <span class="m">d = 1024</span> it plateaus at ~95% and never fully generalizes.</li>
-    <li><strong>Softmax training never finds the theoretical solution.</strong> Merrill et al.'s construction uses uniform attention (<span class="m">Δ = 0</span>). Softmax training converges instead to a consistent token-identity clustering solution (<span class="m">Δ ≈ 1.10</span>) across all seeds. Saturated training occasionally approaches <span class="m">Δ ≈ 0</span> but does so unreliably — only one seed per condition lands near the theoretical construction, and the mechanism varies widely across runs.</li>
+    <li><strong>The theoretical solution is never merely found.</strong> Merrill et al.'s construction uses uniform attention (<span class="m">Δ = 0</span>). Softmax training converges instead to a consistent token-identity clustering solution (<span class="m">Δ ≈ 1.10</span>) across all seeds. Saturated training occasionally approaches <span class="m">Δ ≈ 0</span> but does so unreliably — only one seed per condition lands near the theoretical construction, and the mechanism varies widely across runs.</li>
     <li><strong>Saturated training is unreliable.</strong> Training with saturated attention — the regime used in Merrill et al.'s proofs — recovers a correct solution in only ~50% of runs. Softmax training succeeds in 10/10 runs with a consistent mechanism.</li>
     <li><strong>Undefined inputs corrupt learning.</strong> Balanced sequences on which MAJORITY is undefined are the sole cause of generalization failure on even-length training data. Removing them restores full performance. Class imbalance has no independent effect. A positive control on OR, a total function, confirms even-length training works when no inputs are undefined.</li>
   </ol>
@@ -961,4 +961,5 @@ https://brokttv.github.io/Blog-1/</pre>
 
 </body>
 </html>
+
 
