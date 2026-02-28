@@ -750,11 +750,11 @@
   <h3>Saturated training is unreliable</h3>
 
   <p>
-    Training directly with saturated attention produces qualitatively different behavior, as shown in the bottom panels of Figure 2. Across 10 seeds, only 5/10 recover a correct solution under odd-length training and 4/10 under even-length training. The failed seeds do not form a consistent alternative attractor — they scatter across all four quadrants: strong positive clustering, near-zero weights, and inverted clustering (<span class="m">Δ &lt; 0</span>) all appear. When saturated training succeeds, it does so through two distinct routes: extreme clustering — seed 4 reaches <span class="m">Δ ≈ 13.47</span> under even-length training and <span class="m">Δ ≈ 11.96</span> under odd-length training — or, in one case per condition, near-zero weights approximating the theoretical construction. Seed 8 converges to <span class="m">Δ ≈ 0.09</span> in both conditions and succeeds, the only instance where gradient descent approaches the uniform-attention solution. This is the exception: there is no reliable path to it, and the majority of successful saturated seeds find strong clustering rather than uniformity.
+    Training directly with saturated attention produces qualitatively different behavior, as shown in the bottom panels of Figure 2. Across 10 seeds, only 5/10 recover a correct solution under odd-length training and 4/10 under even-length training. The failed seeds do not form a consistent alternative attractor — they scatter across all four quadrants: strong positive clustering, near-zero weights, and inverted clustering (<span class="m">Δ &lt; 0</span>) all appear. When saturated training succeeds, it does so through two distinct routes: extreme clustering — seed 4 reaches <span class="m">Δ ≈ 13.47</span> under even-length training and <span class="m">Δ ≈ 11.96</span> under odd-length training — or, in one case per condition, near-zero weights approximating the theoretical construction. Seed 8 converges to <span class="m">Δ ≈ 0.09</span> in both conditions and succeeds, the only instance where gradient descent approaches the uniform-attention solution. This is the only exception: there is no reliable path to it, and the majority of successful saturated seeds find strong clustering rather than uniformity.
   </p>
 
   <p>
-    To visualize how these weight configurations manifest in practice, Figure 2 shows the attention matrices produced by a representative input sequence under each regime. For the softmax case we take a randomly selected successful seed, as all runs converge to the same clustering solution. For the saturated case we show seed 8 specifically — the only run that converges near the theoretical construction (<span class="m">Δ ≈ 0.09</span>) and thus the closest gradient descent comes to recovering uniform attention under saturated training.
+    To visualize how these weight configurations manifest in practice, Figure 3 shows the attention matrices produced by a representative input sequence under each regime. For the softmax case we take a randomly selected successful seed, as all runs converge to the same clustering solution. For the saturated case we show seed 8 specifically — the only run that converges near the theoretical construction (<span class="m">Δ ≈ 0.09</span>) and thus the closest gradient descent comes to recovering uniform attention under saturated training.
   </p>
 
   <figure>
@@ -961,3 +961,4 @@ https://brokttv.github.io/Blog-1/</pre>
 
 </body>
 </html>
+
