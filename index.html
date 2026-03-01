@@ -589,7 +589,7 @@
 <!-- ── ABSTRACT ── -->
 <div class="abstract">
   <span class="abstract-hed">Abstract</span>
-  Merrill, Sabharwal, and Smith (2022) prove that a 1-layer transformer with saturated attention can recognize MAJORITY, placing such models strictly above AC⁰ in circuit complexity. Their proof constructs an explicit solution using uniform attention, where every token is weighted equally. We train minimal 1-layer transformers on MAJORITY and find that softmax-trained models never recover this solution — converging instead to a token-identity clustering mechanism (<span class="m">Δ ≈ 1.10</span>) in which same-value tokens attend to each other and suppress tokens of the opposite value. Saturated training recovers a solution in only approximately 50% of runs, with no consistent mechanism; one seed per condition converges near the theoretical construction (<span class="m">Δ ≈ 0</span>) and succeeds, but this is the exception rather than the rule. We further show that training data containing balanced inputs — on which MAJORITY is undefined — corrupts learning disproportionately and is the sole source of generalization failure on even-length sequences. A positive control on the OR function, which is total and admits no undefined inputs, confirms that even-length training succeeds when the target function is defined on all training examples. These results characterize the gap between expressivity theory and gradient descent, and identify the definedness of the target function on training inputs as a previously unexamined driver of learnability.
+  Merrill, Sabharwal, and Smith (2022) prove that a 1-layer transformer with saturated attention can recognize MAJORITY, placing such models strictly above AC⁰ in circuit complexity. Their proof constructs an explicit solution using uniform attention, where every token is weighted equally. We train minimal 1-layer transformers on MAJORITY and find that gradient descent does not recover this construction under either training regime. Softmax-trained models converge instead to a token-identity clustering mechanism (<span class="m">Δ ≈ 1.10</span>) in which same-value tokens attend to each other and suppress tokens of the opposite value. Saturated training — the regime the theoretical proof operates in — recovers a correct solution in only approximately 50% of runs, with no consistent mechanism; convergence near the theoretical construction (<span class="m">Δ ≈ 0</span>) occurs in isolated cases but does not reliably produce correct generalization.
 </div>
 
 <!-- ── KEY FINDINGS ── -->
@@ -961,6 +961,7 @@ https://brokttv.github.io/Blog-1/</pre>
 
 </body>
 </html>
+
 
 
 
