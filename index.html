@@ -714,14 +714,14 @@
       <strong>Figure 1.</strong> Softmax accuracy at test length 301 across embedding sizes, averaged over 10 seeds (shading = ±1 std). SGD plateaus below 96% regardless of capacity. AdamW achieves perfect accuracy at low dimension (<span class="m">d ≤ 52</span>) but degrades at <span class="m">d = 112</span> and becomes unreliable at <span class="m">d = 512</span>, where three seeds collapse to near chance — suggesting that excess capacity can destabilize AdamW training on this task.
     </figcaption>
   </figure>
+  <p>
+    A possible explanation for Adam's reliability at minimum capacity is that MAJORITY generates heterogeneous gradient signals: same-value token pairs must push <span class="m">s<sub>same</sub></span> positive while cross-value pairs push <span class="m">s<sub>diff</sub></span> negative. Adam's per-parameter adaptive learning rates handle this structure naturally; SGD applies uniform scaling and fails to orient the embeddings correctly at low dimension. Why this advantage inverts at high capacity — where excess dimensions appear to destabilize Adam rather than help — remains an open question.
+  
   <div class="finding">
     <span class="finding-hed">Finding 1</span>
     <p>Adam recovers MAJORITY at <span class="m">d = 1</span> and generalizes perfectly to all tested lengths. SGD requires <span class="m">d ≥ 15</span> to begin learning and plateaus at ~95% regardless of further capacity increase. Model capacity does not substitute for optimizer adaptivity on this task. Notably, excess capacity hurts Adam: reliability degrades above <span class="m">d = 52</span> and collapses at <span class="m">d = 1024</span>, suggesting the ground-minimum-capacity solution is not just sufficient but optimal.</p>
   </div>
 
-  <p>
-    MAJORITY generates heterogeneous gradient signals: same-value token pairs must push <span class="m">s<sub>same</sub></span> positive while cross-value pairs push <span class="m">s<sub>diff</sub></span> negative. Adam's per-parameter adaptive learning rates handle this structure; SGD applies uniform scaling and fails to orient the embeddings correctly at low dimension.
-  </p>
 </section>
 
 <!-- ── 4. FINDING 2 ── -->
@@ -906,7 +906,7 @@
       <span class="oq-num">03</span>
       <div class="oq-body">
         <p class="oq-title">Mechanism diversity in saturated transformers</p>
-        <p class="oq-text">Saturated transformers rarely approach the theoretical solution — and when they do (e.g. seed 8, <span class="m">Δ ≈ 0.09</span>), it appears accidental rather than systematic. The conditions under which this occurs, and whether it reflects a distinct basin of attraction or mere proximity to initialization, remain unclear. A formal explanation of this variability, and whether it reflects multiple basins of attraction or sensitivity to initialization, would be a meaningful contribution.</p>
+        <p class="oq-text">Saturated transformers rarely approach the theoretical solution — and when they do (e.g. seed 8, <span class="m">Δ ≈ 0.09</span>), it appears accidental rather than systematic. The conditions under which this occurs, and whether it reflects multiple basins of attraction or sensitivity to initialization, remain an open question worth pursuing formally.
       </div>
     </div>
 
@@ -961,5 +961,6 @@ https://brokttv.github.io/Blog-1/</pre>
 
 </body>
 </html>
+
 
 
