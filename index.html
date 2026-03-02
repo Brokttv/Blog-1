@@ -607,7 +607,7 @@
   </p>
 
   <p>
-    We fix embedding dimension <span class="m">d = 1</span> throughout. At this dimension, all weight matrices collapse to scalars and the attention score between any two token embeddings <span class="m">e<sub>i</sub></span>, <span class="m">e<sub>j</sub> ∈ ℝ</span> reduces to:
+    Unless otherwise stated, we fix embedding dimension <span class="m">d = 1</span> throughout. At this dimension, all weight matrices collapse to scalars and the attention score between any two token embeddings <span class="m">e<sub>i</sub></span>, <span class="m">e<sub>j</sub> ∈ ℝ</span> reduces to:
   </p>
 
   <div class="eq-block">
@@ -642,7 +642,7 @@
   </p>
 
   <p>
-    All experiments use Adam (lr = 0.01), 20 training epochs, 1,000 training sequences, and 200 test sequences per evaluation. We run 10 independent seeds per condition. Training and test sets are generated independently. Accuracy is reported under both softmax and saturated inference on the trained weights.
+    Unless otherwise stated, all experiments use Adam (lr = 0.01), 20 training epochs, 1,000 training sequences, and 200 test sequences per evaluation. We run 10 independent seeds per condition. Training and test sets are generated independently. Accuracy is reported under both softmax and saturated inference on the trained weights.
   </p>
 </section>
 
@@ -919,6 +919,7 @@ https://brokttv.github.io/Blog-1/</pre>
 
 </body>
 </html>
+
 
 
 
